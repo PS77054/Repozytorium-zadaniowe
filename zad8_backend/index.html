@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Paweł Szymański - Stylowanie CV - 77054</title>
+    <link id="style" href="red.css" rel="stylesheet">
+	<script src="script.js" defer></script>
+</head>
+
+<body>
+    <button onclick="ZmienMotyw()">Zmień motyw</button>
+    <button onclick="PokazUkryjDoswiadczenie()">Pokaż/Ukryj Doświadczenie</button>
+	
+    <header>
+        <h1>Paweł Szymański - CV</h1>
+    </header>
+	
+    <main>
+		<div class = "cv" >
+			<section>
+				<h2>Kontakt </h2>
+				<img src="zdjecie.jpg" alt="Moje zdjęcie" class="photo">
+				<p>email: <a href="mailto:pszyma12@stu.vistula.edu.pl">pszyma12@stu.vistula.edu.pl</a></p>
+				<p>telefon: <a href="tel:+48691691691">+48 691 691 691</a></p>
+				<p>miasto: Warszawa</p>
+				<br>
+				<a href="https://github.com/PS77054/Repozytorium-zadaniowe" target="_blank" rel="noopener noreferrer">GitHub</a>
+				<a href="https://outlook.office.com/mail" target="_blank" rel="noopener noreferrer"> Outlook</a>
+			</section>
+
+			<section>
+				<h2>O mnie</h2>
+				<p>Student I roku Akademii Finansów i Biznesu Vistula na kierunku Informatyka (Nr indeksu 77054)</p>
+			</section>
+
+			<section>
+				<h2>Umiejętności</h2>
+				<ul id="umiejetnosci"> </ul>
+			</section>
+
+			<section id="doswiadczenie">
+				<h2>Doświadczenie</h2>
+				<article>
+					Tester oprogramowania
+					<br>Firma: PlayWay
+					<br>Rok: 2024
+					<br>Testowanie symulatorów
+				</article>
+	
+				<article>
+					<br> Praktykant
+					<br> Firma: Urząd Skarbowy
+					<br> Rok: 2023
+					<br> Archiwizacja danych podatkowych w Excelu
+				</article>
+			</section>
+
+			<section>
+				<h2>Edukacja</h2>
+				<ul>
+					<li>Akademia Finansów i Biznesu Vistula w Warszawie
+						<br>Kierunek: Informatyka
+						<br>Od 2025 roku</li>
+					
+					<li>Technikum Nr 24 w Warszawie na kierunku Informatyka
+					<br>Od 2019 do 2024 roku</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Projekty</h2>
+				<ul id="projekty"></ul>
+			</section>
+			
+		</div>
+		
+		<div class = "formularz">
+		
+			<h2>Formularz kontaktowy - 77054</h2>
+
+			<form id="formularz">
+				<div class="wiersz">
+					<label>Imię:</label>
+					<div class="pole">
+						<input type="text" id="imie" required>
+						<div class="blad" id="blad-imie"></div>
+					</div>
+				</div>
+
+				<div class="wiersz">
+					<label>Nazwisko:</label>
+					<div class="pole">
+						<input type="text" id="nazwisko" required>
+						<div class="blad" id="blad-nazwisko"></div>
+					</div>
+				</div>
+
+				<div class="wiersz">
+					<label>Email:</label>
+					<div class="pole">
+						<input type="email" id="email" required>
+						<div class="blad" id="blad-email"></div>
+					</div>
+				</div>
+
+				<div class="wiersz">
+					<label>Wiadomość:</label>
+					<div class="pole">
+						<textarea id="wiadomosc" required></textarea>
+						<div class="blad" id="blad-wiadomosc"></div>
+					</div>
+				</div>
+
+				<button type="submit">Wyślij</button>
+	
+			</form>
+			
+			<section>
+				<h2>Moje notatki</h2>
+				<input type="text" id="nowa-notatka" placeholder="Wprowadź notatkę">
+				<button onclick="dodajNotatke()">Zapisz</button>
+				<ul id="notatki"></ul>
+			</section>
+			
+		</div>
+	</main>
+	
+	<footer>
+		<br>
+		<p>Wyrażam zgodę na przetwarzanie moich danych osobowych</p>
+	</footer>
+	
+	<script type="module">
+
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+
+		import {
+			getFirestore,
+			doc,
+			setDoc
+			} from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
+
+		const firebaseConfig = {
+			apiKey: "AIzaSyAfTIoWb9_hnG6D84-pGeIW2iaqMge5jOk",
+			authDomain: "zad8backend.firebaseapp.com",
+			projectId: "zad8backend",
+			storageBucket: "zad8backend.firebasestorage.app",
+			messagingSenderId: "744421863434",
+			appId: "1:744421863434:web:27015f0ba8648b8396eff3"
+		};
+
+		const app = initializeApp(firebaseConfig);
+		const db = getFirestore(app);
+
+		window.db = db;
+		window.doc = doc;
+		window.setDoc = setDoc;
+
+	</script>
+
+</body>
+</html>
